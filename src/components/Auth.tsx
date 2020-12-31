@@ -8,7 +8,7 @@ const Auth = ({ children }) => {
         setLogin(liff.isLoggedIn());
     }, []);
 
-    if (isLogin) {
+    if (isLogin || process.env.NODE_ENV !== "production") {
         return children;
     }
 
