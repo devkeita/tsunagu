@@ -13,10 +13,7 @@ const Auth = ({ children }) => {
     }
 
     if (isLogin === false) {
-        if (!liff.isInClient()) {
-            return <div>LINEでこのアプリを開いてください</div>
-        }
-        return <div>ログインできませんでした。もう一度やり直してください</div>
+        liff.login();
     }
 
     return <Loading />
