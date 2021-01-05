@@ -2,7 +2,7 @@ import React from "react";
 
 const Index = () => {
     return (
-        <div>Hello Nextjs</div>
+        <div>ホーム</div>
     )
 };
 

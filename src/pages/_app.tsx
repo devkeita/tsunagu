@@ -1,6 +1,7 @@
 import React from "react";
 import Liff from "../components/Liff";
 import Auth from "../components/Auth";
+import FooterMenu from "../components/FooterMenu";
 
 const App = ({ Component, pageProps }) => {
     return (
@@ -10,6 +11,7 @@ const App = ({ Component, pageProps }) => {
                     <Component {...pageProps} />
                 </Auth>
             </Liff>
+            <FooterMenu />
         </React.Fragment>
     );
 };

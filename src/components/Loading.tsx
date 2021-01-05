@@ -1,8 +1,11 @@
 import React from "react";
+import { Backdrop, CircularProgress } from "@material-ui/core";
 
-const Loading = () => {
+const Loading: React.FC = () => {
     return (
-        <div>Loading...</div>
+        <Backdrop open={true} onClick={() => {}}>
+            <CircularProgress color="inherit" />
+        </Backdrop>
     );
 };
 
