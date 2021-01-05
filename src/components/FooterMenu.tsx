@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import BottomNavigation from "@material-ui/core/BottomNavigation";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
 import HomeIcon from '@material-ui/icons/Home';
@@ -16,24 +17,32 @@ const useStyle = makeStyles({
 });
 
 const FooterMenu = () => {
-    const [value, setValue] = useState('home');
+    const [value, setValue] = useState('/');
+
+    const router = useRouter();
 
     const classes = useStyle();
+
+    useEffect(() => {
+        setValue(router.pathname);
+    }, [router.pathname]);
+
+    const handleChange = async (event, newValue) => {
+        await router.push(newValue);
+    };
 
     return (
         <BottomNavigation
             className={classes.root}
             value={value}
-            onChange={(event, newValue) => {
-                setValue(newValue);
-            }}
+            onChange={handleChange}
             showLabels
         >
-            <BottomNavigationAction label="ホーム" value="home" icon={<HomeIcon />} />
-            <BottomNavigationAction label="グループ" value="groups" icon={<GroupIcon />} />
-            <BottomNavigationAction label="設定" value="setting" icon={<SettingsIcon />} />
+            <BottomNavigationAction label="ホーム" value="/" icon={<HomeIcon />} />
+            <BottomNavigationAction label="グループ" value="/groups" icon={<GroupIcon />} />
+            <BottomNavigationAction label="設定" value="/settings" icon={<SettingsIcon />} />
         </BottomNavigation>
-    )
+    );
 };
 
 export default FooterMenu;
